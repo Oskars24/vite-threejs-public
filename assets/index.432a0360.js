@@ -1,1 +1,641 @@
-import{H as e,D as t,E as a,R as o,S as n,B as s,M as i,G as r,m as c,a as d,b as l,c as p,d as u,L as y,V as m,A as w,C as f,e as g,f as h,g as x,h as v,i as b,W as D,P as A,O as S,j as K,k as R,F as M,l as P,n as z,o as W}from"./vendor.ddfd89fe.js";!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver((e=>{for(const a of e)if("childList"===a.type)for(const e of a.addedNodes)"LINK"===e.tagName&&"modulepreload"===e.rel&&t(e)})).observe(document,{childList:!0,subtree:!0})}function t(e){if(e.ep)return;e.ep=!0;const t=function(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),"use-credentials"===e.crossorigin?t.credentials="include":"anonymous"===e.crossorigin?t.credentials="omit":t.credentials="same-origin",t}(e);fetch(e.href,t)}}();const E=new v,F=new b,k=new D({antialias:!0}),V=new A,L=[],C=new S(V,k.domElement),O={scaleFactor:1,popup:!1};let B=window.innerWidth,j=window.innerHeight;const G=new f;let T=0;const I=new m(0,0,0),H=new m(2.5,15,25),_=()=>{B=window.innerWidth,j=window.innerHeight,N(),V.aspect=B/j,V.updateProjectionMatrix(),k.setSize(B,j),k.setPixelRatio(Math.min(window.devicePixelRatio,2)*O.scaleFactor)},N=()=>{(B>1920||j>1080)&&(O.scaleFactor=Math.min(1920/B,1080/j))};N(),V.fov=60,V.aspect=B/j,V.near=1,V.far=300,V.position.set(I.x+H.x,I.y+H.y,I.z+H.z),V.updateProjectionMatrix(),k.setSize(B,j),k.setPixelRatio(Math.min(window.devicePixelRatio,2)*O.scaleFactor),k.shadowMap.enabled=!0,k.shadowMap.type=K,document.body.appendChild(k.domElement),F.background=new R(4502015),F.fog=new M(4502015,60,300),window.addEventListener("resize",_);const q=new P;q.showPanel(0),document.body.appendChild(q.dom),C.enableDamping=!0,C.dampingFactor=.05,C.screenSpacePanning=!1,C.minDistance=30,C.maxDistance=30,C.maxPolarAngle=75*Math.PI/180,C.enablePan=!1,C.enableZoom=!1,C.target=I;const U=new W;!function(a){const o=new e(16777215,2236962,.5),n=new t(16777215,.7);n.position.set(1,1.5,1).multiplyScalar(100),n.shadow.mapSize.setScalar(3072),n.shadow.bias=-.001,n.shadow.normalBias=.05,n.castShadow=!0;const s=n.shadow.camera;s.bottom=s.left=-300,s.top=300,s.right=300,a.add(o,n)}(F),function(e,t,s){const i=new a(s),r=new o(e,t);i.addPass(r);const c=new n(window.innerWidth*s.getPixelRatio(),window.innerHeight*s.getPixelRatio());i.addPass(c)}(F,V,k);const Z=new z(U),J={};var Q,X,Y,$,ee;X=F,Y=J,$="islands/islands.gltf",ee="islands/islands_physics.gltf",(Q=Z).load($,(e=>{const t=e.scene,a=new s;a.setFromObject(t),a.getCenter(t.position).negate(),t.updateMatrixWorld(!0);const o={};t.traverse((e=>{if(e instanceof i){const t=e.material.color.getHex();o[t]=o[t]||[],o[t].push(e),e.castShadow=!0,e.receiveShadow=!0,e.material.shadowSide=2}}));const n=new r;for(const s in o){const e=o[s],t=[];if(e.forEach((e=>{if(0!==e.material.emissive.r)n.attach(e);else{const a=e.geometry.clone();a.applyMatrix4(e.matrixWorld),t.push(a)}})),t.length){const e=c(t),a=new i(e,new d({color:16777215,opacity:0,transparent:!0,depthWrite:!1}));a.castShadow=!0,a.receiveShadow=!0,a.material.shadowSide=2,n.add(a)}}const u=[];n.updateMatrixWorld(!0),n.traverse((e=>{if(e instanceof i){const t=e.geometry.clone();t.applyMatrix4(e.matrixWorld);for(const e in t.attributes)"position"!==e&&t.deleteAttribute(e);u.push(t)}}));const y=c(u,!1);y.boundsTree=new l(y,{lazyGeneration:!1});const m=new i(y);m.material.wireframe=!0,m.material.opacity=.5,m.material.transparent=!0,m.userData.name="collider",Y[m.userData.name]=m,new p(m,1e3).visible=!0,X.add(t)}),void 0,(function(e){console.error(e)})),Q.load(ee,(e=>{const t=e.scene;t.userData.name="floor",t.visible=!1,X.add(t),Y[t.userData.name]=t}),void 0,(function(e){console.error(e)}));const te={},{testAllKeys:ae,testAnyKeys:oe,keysFunctions:ne,checkPressedKeys:se,testAllButtons:ie,testAnyButton:re,testAxis:ce,checkPads:de,gamepads:le}=function(e){const t=[];let a=[];return window.addEventListener("keydown",(t=>{e[t.code]=!0})),window.addEventListener("keyup",(t=>{e[t.code]=!1})),window.addEventListener("gamepadconnected",(e=>{console.log(e.gamepad.id,"podłączony")})),window.addEventListener("gamepaddisconnected",(e=>{console.log(e.gamepad.id,"odłączony")})),{testAllKeys:(t,a=null)=>{const o=t.every((t=>!0===e[t]));if(a){const t=a.every((t=>!1===e[t]||void 0===e[t]));return o&&t}return o},testAnyKeys:t=>t.some((t=>!0===e[t])),keysFunctions:t,checkPressedKeys:()=>{t.forEach((e=>{e()}))},testAllButtons:(e,t=null)=>{const o=e.every((e=>{var t;return null==(t=a[0])?void 0:t.buttons[e].pressed}));if(t){const e=t.every((e=>{var t;return!(null==(t=a[0])?void 0:t.buttons[e].pressed)}));return o&&e}return o},testAnyButton:e=>e.some((e=>{var t;return null==(t=a[0])?void 0:t.buttons[e].pressed})),testAxis:()=>{var e,t;if(a[0]){const o=.3,n=null==(e=a[0])?void 0:e.axes[0],s=null==(t=a[0])?void 0:t.axes[1],i={angle:180*Math.atan2(s,-n)/Math.PI-90,x:n,z:s};if(Math.abs(n)>o||Math.abs(s)>o)return i}},checkPads:()=>{a=navigator.getGamepads()},gamepads:a}}(te);L.push(se,de);const{robotRunning:pe,toAnimate:ue,lifes:ye,resetGame:me}=function(e,t,a,o,n,r,c,d,l,p,v,b,D,A,S,K,R,M,P){const z=new f;let W=!1;const E=new s,F=new u,k=new y,V=new m,L=new m,C=new m(0,1,0),O=new m;let B=3;const j=(new m).copy(K);let G=null;const T=(e,t)=>{const a=e.getClip().duration/e.getEffectiveTimeScale(),o=t.getClip().duration/t.getEffectiveTimeScale();return.25*o>a?a:.25*o},I=()=>{const e=a.collider,t=.1,o=a.Robot;0==o.userData.velocity.y&&O.set(o.position.x,o.position.y,o.position.z);let n=o.userData.speed;o.userData.velocity.y+=-.2,o.position.addScaledVector(o.userData.velocity,t);const i=2200==(null==G?void 0:G.loop),r=A.getAzimuthalAngle(),d=180*r/Math.PI;let l=180*a.Robot.rotation.y/Math.PI;!c(["ShiftLeft"])&&!p([7])||i||(n*=2),(c(["KeyW"],["KeyA","KeyS","KeyD"])||p([12],[13,14,15]))&&(V.set(0,0,-1).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=180+d),(c(["KeyA"],["KeyW","KeyS","KeyD"])||p([14],[12,13,15]))&&(V.set(-1,0,0).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=-90+d),(c(["KeyS"],["KeyW","KeyA","KeyD"])||p([13],[12,14,15]))&&(V.set(0,0,1).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=0+d),(c(["KeyD"],["KeyW","KeyA","KeyS"])||p([15],[12,13,14]))&&(V.set(1,0,0).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=90+d),(c(["KeyW","KeyA"])||p([12,14]))&&(V.set(-1,0,-1).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=-135+d),(c(["KeyW","KeyD"])||p([12,15]))&&(V.set(1,0,-1).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=135+d),(c(["KeyS","KeyA"])||p([13,14]))&&(V.set(-1,0,1).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=-45+d),(c(["KeyS","KeyD"])||p([13,15]))&&(V.set(1,0,1).applyAxisAngle(C,r),o.position.addScaledVector(V,n*t),l=45+d),o.rotation.y=l*(Math.PI/180),o.updateMatrixWorld();const u=_(a.Robot);u.max.y,u.min.y,(new s).setFromObject(a.Robot),u.min.lerp(u.max,.5);const w=new y(new m(0,0,0),new m(0,0,0));E.makeEmpty(),F.copy(e.matrixWorld).invert(),k.copy(w),k.start.applyMatrix4(o.matrixWorld).applyMatrix4(F),k.end.applyMatrix4(o.matrixWorld).applyMatrix4(F),E.expandByPoint(k.start),E.expandByPoint(k.end),E.min.sub(new m(1.175,2.25,1.175)),E.max.sub(new m(-1.175,-2.25,-1.175)),e.geometry.boundsTree.shapecast(e,{intersectsBounds:e=>e.intersectsBox(E),intersectsTriangle:e=>{const t=e.closestPointToSegment(k,V,L);if(t<2.25){const e=2.25-t,a=L.sub(V).normalize();k.start.addScaledVector(a,e),k.end.addScaledVector(a,e)}}});const f=V;f.copy(k.start).applyMatrix4(e.matrixWorld);const g=L;g.subVectors(f,o.position),o.position.copy(f),o.userData.isOnGround=g.y>Math.abs(t*o.userData.velocity.y*.25),o.userData.isOnGround?o.userData.velocity.set(0,0,0):(g.normalize(),o.userData.velocity.addScaledVector(g,-g.dot(o.userData.velocity))),o.position.y<-40&&(o.userData.velocity.set(0,0,0),o.position.set(O.x,O.y,O.z),B--),x({targets:A.target,easing:"easeOutCirc",duration:2e3,complete:()=>{},x:a.Robot.position.x,y:a.Robot.position.y,z:a.Robot.position.z})},H=()=>{if(n.Robot){if(d(["KeyW","KeyA","KeyS","KeyD"])||v([12,13,14,15])||b()){let e=1;(c(["ShiftLeft"])||p([7]))&&(e=2),((e,t,a,o=1,n=!0)=>{const s=t.find((e=>e.name===a)),i=e.clipAction(s);i.setEffectiveTimeScale(o),n||i.time!=i.getClip().duration||i.reset(),n||i==G||(W=!0,i.setLoop(g,1),i.setEffectiveWeight(1).reset(),null==G||G.fadeOut(T(G,i)),G=i),W?G&&G.time/G.getClip().duration>=.75&&(W=!1,i.fadeIn(T(i,G)).reset(),G=i):(i.setEffectiveWeight(1),G=i)})(n.Robot,o.Robot,"Robot_Running",e)}else((e,t,a)=>{const o=t.find((e=>e.name===a));e.clipAction(o).setEffectiveWeight(0)})(n.Robot,o.Robot,"Robot_Running");(d(["Space"])||p([0]))&&(W||0==a.Robot.userData.velocity.y&&(a.Robot.userData.velocity.y=5))}},_=e=>{const t=new h(e),a=new m(1/0,1/0,1/0),o=new m(-1/0,-1/0,-1/0);for(let n=0;n<t.bones.length;n++){const e=t.bones[n],s=new m;e.getWorldPosition(s),s.x<a.x&&(a.x=s.x),s.y<a.y&&(a.y=s.y),s.z<a.z&&(a.z=s.z),s.x>o.x&&(o.x=s.x),s.y>o.y&&(o.y=s.y),s.z>o.z&&(o.z=s.z)}return{min:a,max:o}};return e.load(D,(e=>{const s=e.scene;s.traverse((e=>{e instanceof i&&(e.castShadow=!0,e.receiveShadow=!0,e.material.shadowSide=2)})),s.userData.name="Robot",s.userData.isOnGround=!1,s.userData.velocity=new m(0,0,0),s.userData.speed=1.5,s.position.set(K.x,K.y,K.z),t.add(s),a[s.userData.name]=s,o[s.userData.name]=e.animations,n[s.userData.name]=new w(s),n[s.userData.name].addEventListener("finished",(function(e){W=!1,H()})),o[s.userData.name].forEach((e=>{n[s.userData.name].clipAction(e).setEffectiveWeight(0).play()}))}),void 0,(function(e){console.error(e)})),{robotRunning:H,toAnimate:()=>{for(const e in n)n[e].update(z.getDelta());a.Robot&&a.collider&&I(),(Object.values(r).includes(!0)||W||l[0])&&I()},lifes:B,resetGame:()=>{B=3;const e=a.Robot;e.userData.velocity.set(0,0,0),e.position.set(j.x,j.y,j.z),setTimeout((()=>{}),1e3)}}}(Z,F,J,{},{},te,ae,oe,le,ie,re,ce,"Robot_edited_centered.glb",C,0,I);L.push(ue),ne.push(pe);const we={reset:()=>{me()}},fe=E.addFolder("Optymalizacja");fe.open(),fe.add(O,"scaleFactor",.05,1,.05).name("Scale Factor").onChange(_),fe.add(k.shadowMap,"autoUpdate").name("Update shadows"),fe.add(V,"far",60,500,10).name("Draw distance").setValue(300).onChange((()=>{F.fog.far=V.far,F.fog.near=V.far/3,V.updateProjectionMatrix()})),E.add(O,"popup").name("Pokaż sterowanie"),E.add(we,"reset").name("Reset position");const ge=()=>{q.begin();const e=G.getDelta();requestAnimationFrame(ge),e>.022222222222222223?(()=>{switch(T){case 0:O.scaleFactor=.75,_(),E.updateDisplay(),T=1;break;case 1:O.scaleFactor=.5,_(),E.updateDisplay(),T=2}})():e<.017543859649122806&&(()=>{switch(T){case 1:O.scaleFactor=1,_(),E.updateDisplay(),T=0;break;case 2:O.scaleFactor=.75,_(),E.updateDisplay(),T=1}})();const t=Math.round(e/(1/60));for(let a=0;a<t;a++)L.forEach((e=>{e()})),C.update();k.render(F,V),q.end()};ge();
+import { H as HemisphereLight, D as DirectionalLight, E as EffectComposer, R as RenderPass, S as SMAAPass, B as Box3, M as Mesh, G as Group, m as mergeBufferGeometries, a as MeshStandardMaterial, b as MeshBVH, c as MeshBVHVisualizer, d as Matrix4, L as Line3, V as Vector3, A as AnimationMixer, C as Clock, e as LoopOnce, f as SkeletonHelper, g as anime, h as GUI$1, i as Scene, W as WebGLRenderer, P as PerspectiveCamera, O as OrbitControls, j as PCFSoftShadowMap, k as Color, F as Fog, l as Stats, n as GLTFLoader, o as LoadingManager } from "./vendor.ddfd89fe.js";
+const p = function polyfill() {
+  const relList = document.createElement("link").relList;
+  if (relList && relList.supports && relList.supports("modulepreload")) {
+    return;
+  }
+  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
+    processPreload(link);
+  }
+  new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type !== "childList") {
+        continue;
+      }
+      for (const node of mutation.addedNodes) {
+        if (node.tagName === "LINK" && node.rel === "modulepreload")
+          processPreload(node);
+      }
+    }
+  }).observe(document, { childList: true, subtree: true });
+  function getFetchOpts(script) {
+    const fetchOpts = {};
+    if (script.integrity)
+      fetchOpts.integrity = script.integrity;
+    if (script.referrerpolicy)
+      fetchOpts.referrerPolicy = script.referrerpolicy;
+    if (script.crossorigin === "use-credentials")
+      fetchOpts.credentials = "include";
+    else if (script.crossorigin === "anonymous")
+      fetchOpts.credentials = "omit";
+    else
+      fetchOpts.credentials = "same-origin";
+    return fetchOpts;
+  }
+  function processPreload(link) {
+    if (link.ep)
+      return;
+    link.ep = true;
+    const fetchOpts = getFetchOpts(link);
+    fetch(link.href, fetchOpts);
+  }
+};
+p();
+var style = "body {\n  margin: 0;\n  background: black\n}\n";
+function addLights(scene2) {
+  const ambientLight = new HemisphereLight(16777215, 2236962, 0.5);
+  const mainLight = new DirectionalLight(16777215, 0.7);
+  mainLight.position.set(1, 1.5, 1).multiplyScalar(100);
+  mainLight.shadow.mapSize.setScalar(3072);
+  mainLight.shadow.bias = -1e-3;
+  mainLight.shadow.normalBias = 0.05;
+  mainLight.castShadow = true;
+  const shadowCam = mainLight.shadow.camera;
+  shadowCam.bottom = shadowCam.left = -300;
+  shadowCam.top = 300;
+  shadowCam.right = 300;
+  scene2.add(ambientLight, mainLight);
+}
+function postProduction(scene2, camera2, renderer2) {
+  const composer = new EffectComposer(renderer2);
+  const renderPass = new RenderPass(scene2, camera2);
+  composer.addPass(renderPass);
+  const pass = new SMAAPass(window.innerWidth * renderer2.getPixelRatio(), window.innerHeight * renderer2.getPixelRatio());
+  composer.addPass(pass);
+}
+function addMap(loader2, scene2, objects2, mapPath, collisionMapPath) {
+  loader2.load(mapPath, (gltf) => {
+    const model = gltf.scene;
+    const box = new Box3();
+    box.setFromObject(model);
+    box.getCenter(model.position).negate();
+    model.updateMatrixWorld(true);
+    const toMerge = {};
+    model.traverse((child) => {
+      if (child instanceof Mesh) {
+        const hex = child.material.color.getHex();
+        toMerge[hex] = toMerge[hex] || [];
+        toMerge[hex].push(child);
+        child.castShadow = true;
+        child.receiveShadow = true;
+        child.material.shadowSide = 2;
+      }
+    });
+    const environment = new Group();
+    for (const hex in toMerge) {
+      const arr = toMerge[hex];
+      const visualGeometries = [];
+      arr.forEach((mesh) => {
+        if (mesh.material.emissive.r !== 0) {
+          environment.attach(mesh);
+        } else {
+          const geom = mesh.geometry.clone();
+          geom.applyMatrix4(mesh.matrixWorld);
+          visualGeometries.push(geom);
+        }
+      });
+      if (visualGeometries.length) {
+        const newGeom = mergeBufferGeometries(visualGeometries);
+        const newMesh = new Mesh(newGeom, new MeshStandardMaterial({ color: 16777215, opacity: 0, transparent: true, depthWrite: false }));
+        newMesh.castShadow = true;
+        newMesh.receiveShadow = true;
+        newMesh.material.shadowSide = 2;
+        environment.add(newMesh);
+      }
+    }
+    const geometries = [];
+    environment.updateMatrixWorld(true);
+    environment.traverse((child) => {
+      if (child instanceof Mesh) {
+        const cloned = child.geometry.clone();
+        cloned.applyMatrix4(child.matrixWorld);
+        for (const key in cloned.attributes) {
+          if (key !== "position") {
+            cloned.deleteAttribute(key);
+          }
+        }
+        geometries.push(cloned);
+      }
+    });
+    const mergedGeometry = mergeBufferGeometries(geometries, false);
+    mergedGeometry.boundsTree = new MeshBVH(mergedGeometry, { lazyGeneration: false });
+    const collider = new Mesh(mergedGeometry);
+    collider.material.wireframe = true;
+    collider.material.opacity = 0.5;
+    collider.material.transparent = true;
+    collider.userData.name = "collider";
+    objects2[collider.userData.name] = collider;
+    const visualizer = new MeshBVHVisualizer(collider, 1e3);
+    visualizer.visible = true;
+    scene2.add(model);
+  }, void 0, function(error) {
+    console.error(error);
+  });
+  loader2.load(collisionMapPath, (gltf) => {
+    const model = gltf.scene;
+    model.userData.name = "floor";
+    model.visible = false;
+    scene2.add(model);
+    objects2[model.userData.name] = model;
+  }, void 0, function(error) {
+    console.error(error);
+  });
+}
+function keysControls(pressedKeys2) {
+  const keysFunctions2 = [];
+  let gamepads2 = [];
+  const keyUp = (e) => {
+    pressedKeys2[e.code] = false;
+  };
+  const keyDown = (e) => {
+    pressedKeys2[e.code] = true;
+  };
+  const connectGamepad = (e) => {
+    console.log(e.gamepad.id, "pod\u0142\u0105czony");
+  };
+  const disconectGamepad = (e) => {
+    console.log(e.gamepad.id, "od\u0142\u0105czony");
+  };
+  const checkPads2 = () => {
+    gamepads2 = navigator.getGamepads();
+  };
+  const checkPressedKeys2 = () => {
+    keysFunctions2.forEach((func) => {
+      func();
+    });
+  };
+  window.addEventListener("keydown", keyDown);
+  window.addEventListener("keyup", keyUp);
+  window.addEventListener("gamepadconnected", connectGamepad);
+  window.addEventListener("gamepaddisconnected", disconectGamepad);
+  const testAllKeys2 = (keysArray, exceptionKeysArray = null) => {
+    const activeInArray = keysArray.every((e) => pressedKeys2[e] === true);
+    if (exceptionKeysArray) {
+      const exceptionInArray = exceptionKeysArray.every((e) => pressedKeys2[e] === false || pressedKeys2[e] === void 0);
+      return activeInArray && exceptionInArray;
+    }
+    return activeInArray;
+  };
+  const testAnyKeys2 = (keysArray) => {
+    return keysArray.some((e) => pressedKeys2[e] === true);
+  };
+  const testAllButtons2 = (buttonsArray, exceptionKeysArray = null) => {
+    const activeInArray = buttonsArray.every((button) => {
+      var _a;
+      return (_a = gamepads2[0]) == null ? void 0 : _a.buttons[button].pressed;
+    });
+    if (exceptionKeysArray) {
+      const exceptionInArray = exceptionKeysArray.every((button) => {
+        var _a;
+        return !((_a = gamepads2[0]) == null ? void 0 : _a.buttons[button].pressed);
+      });
+      return activeInArray && exceptionInArray;
+    }
+    return activeInArray;
+  };
+  const testAxis2 = () => {
+    var _a, _b;
+    if (gamepads2[0]) {
+      const axisTolerance = 0.3;
+      const a0 = (_a = gamepads2[0]) == null ? void 0 : _a.axes[0];
+      const a1 = (_b = gamepads2[0]) == null ? void 0 : _b.axes[1];
+      const angle = Math.atan2(a1, -a0) * 180 / Math.PI;
+      const result = {
+        angle: angle - 90,
+        x: a0,
+        z: a1
+      };
+      if (Math.abs(a0) > axisTolerance || Math.abs(a1) > axisTolerance)
+        return result;
+    }
+  };
+  const testAnyButton2 = (buttonsArray) => {
+    return buttonsArray.some((button) => {
+      var _a;
+      return (_a = gamepads2[0]) == null ? void 0 : _a.buttons[button].pressed;
+    });
+  };
+  return {
+    testAllKeys: testAllKeys2,
+    testAnyKeys: testAnyKeys2,
+    keysFunctions: keysFunctions2,
+    checkPressedKeys: checkPressedKeys2,
+    testAllButtons: testAllButtons2,
+    testAnyButton: testAnyButton2,
+    testAxis: testAxis2,
+    checkPads: checkPads2,
+    gamepads: gamepads2
+  };
+}
+function addCharacter(loader2, scene2, objects2, animations2, mixers2, pressedKeys2, testAllKeys2, testAnyKeys2, gamepads2, testAllButtons2, testAnyButton2, testAxis2, characterPath, controls2, camera2, position, cameraOffset2, animation, gameOver) {
+  const clock2 = new Clock();
+  let pauseOthersAnimations = false;
+  const tempBox = new Box3();
+  const tempMatrix = new Matrix4();
+  const tempSegment = new Line3();
+  const tempVector = new Vector3();
+  const tempVector2 = new Vector3();
+  const upVector = new Vector3(0, 1, 0);
+  const gravity = -2;
+  const lastSavePosition = new Vector3();
+  let lifes2 = 3;
+  const defaultPosition = new Vector3().copy(position);
+  let currentAnimation = null;
+  const playAnimation = (objectMixer, objectAnimations, animationName, acceleration = 1, loop = true) => {
+    const clip = objectAnimations.find((el) => el.name === animationName);
+    const animation2 = objectMixer.clipAction(clip);
+    animation2.setEffectiveTimeScale(acceleration);
+    if (!loop && animation2.time == animation2.getClip().duration) {
+      animation2.reset();
+    }
+    if (!loop && animation2 != currentAnimation) {
+      pauseOthersAnimations = true;
+      animation2.setLoop(LoopOnce, 1);
+      animation2.setEffectiveWeight(1).reset();
+      currentAnimation == null ? void 0 : currentAnimation.fadeOut(getFadeTime(currentAnimation, animation2));
+      currentAnimation = animation2;
+    }
+    if (pauseOthersAnimations) {
+      if (currentAnimation && currentAnimation.time / currentAnimation.getClip().duration >= 0.75) {
+        pauseOthersAnimations = false;
+        animation2.fadeIn(getFadeTime(animation2, currentAnimation)).reset();
+        currentAnimation = animation2;
+      }
+    } else {
+      animation2.setEffectiveWeight(1);
+      currentAnimation = animation2;
+    }
+  };
+  const getFadeTime = (startAnimation, endAnimation) => {
+    const startAnimationTime = startAnimation.getClip().duration / startAnimation.getEffectiveTimeScale();
+    const endAnimationTime = endAnimation.getClip().duration / endAnimation.getEffectiveTimeScale();
+    if (endAnimationTime * 0.25 > startAnimationTime) {
+      return startAnimationTime;
+    } else {
+      return endAnimationTime * 0.25;
+    }
+  };
+  const stopAnimation = (objectMixer, objectAnimations, animationName) => {
+    const clip = objectAnimations.find((el) => el.name === animationName);
+    const animation2 = objectMixer.clipAction(clip);
+    animation2.setEffectiveWeight(0);
+  };
+  const updateCameraPosition = () => {
+    anime({
+      targets: controls2.target,
+      easing: "easeOutCirc",
+      duration: 2e3,
+      complete: () => {
+      },
+      x: objects2["Robot"].position.x,
+      y: objects2["Robot"].position.y,
+      z: objects2["Robot"].position.z
+    });
+  };
+  const resetGame2 = () => {
+    lifes2 = 3;
+    const player = objects2["Robot"];
+    player.userData.velocity.set(0, 0, 0);
+    player.position.set(defaultPosition.x, defaultPosition.y, defaultPosition.z);
+    setTimeout(() => {
+    }, 1e3);
+  };
+  const checkKeysState = () => {
+    const collider = objects2["collider"];
+    const delta = 0.1;
+    const player = objects2["Robot"];
+    if (player.userData.velocity.y == 0)
+      lastSavePosition.set(player.position.x, player.position.y, player.position.z);
+    let speed = player.userData.speed;
+    player.userData.velocity.y += delta * gravity;
+    player.position.addScaledVector(player.userData.velocity, delta);
+    const oneLoop = (currentAnimation == null ? void 0 : currentAnimation.loop) == 2200;
+    const angle = controls2.getAzimuthalAngle();
+    const cameraAngle = angle * 180 / Math.PI;
+    const robotRotation = objects2["Robot"].rotation.y * 180 / Math.PI;
+    let robotAngle = robotRotation;
+    if ((testAllKeys2(["ShiftLeft"]) || testAllButtons2([7])) && !oneLoop) {
+      speed *= 2;
+    }
+    if (testAllKeys2(["KeyW"], ["KeyA", "KeyS", "KeyD"]) || testAllButtons2([12], [13, 14, 15])) {
+      tempVector.set(0, 0, -1).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = 180 + cameraAngle;
+    }
+    if (testAllKeys2(["KeyA"], ["KeyW", "KeyS", "KeyD"]) || testAllButtons2([14], [12, 13, 15])) {
+      tempVector.set(-1, 0, 0).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = -90 + cameraAngle;
+    }
+    if (testAllKeys2(["KeyS"], ["KeyW", "KeyA", "KeyD"]) || testAllButtons2([13], [12, 14, 15])) {
+      tempVector.set(0, 0, 1).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = 0 + cameraAngle;
+    }
+    if (testAllKeys2(["KeyD"], ["KeyW", "KeyA", "KeyS"]) || testAllButtons2([15], [12, 13, 14])) {
+      tempVector.set(1, 0, 0).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = 90 + cameraAngle;
+    }
+    if (testAllKeys2(["KeyW", "KeyA"]) || testAllButtons2([12, 14])) {
+      tempVector.set(-1, 0, -1).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = -135 + cameraAngle;
+    }
+    if (testAllKeys2(["KeyW", "KeyD"]) || testAllButtons2([12, 15])) {
+      tempVector.set(1, 0, -1).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = 135 + cameraAngle;
+    }
+    if (testAllKeys2(["KeyS", "KeyA"]) || testAllButtons2([13, 14])) {
+      tempVector.set(-1, 0, 1).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = -45 + cameraAngle;
+    }
+    if (testAllKeys2(["KeyS", "KeyD"]) || testAllButtons2([13, 15])) {
+      tempVector.set(1, 0, 1).applyAxisAngle(upVector, angle);
+      player.position.addScaledVector(tempVector, speed * delta);
+      robotAngle = 45 + cameraAngle;
+    }
+    player.rotation.y = robotAngle * (Math.PI / 180);
+    player.updateMatrixWorld();
+    const height = 4.5;
+    const width = 2.35;
+    const radius = height / 2;
+    const skeletonExtremes = getSkeletonExtremes(objects2["Robot"]);
+    skeletonExtremes.max.y - skeletonExtremes.min.y;
+    new Box3().setFromObject(objects2["Robot"]);
+    skeletonExtremes.min.lerp(skeletonExtremes.max, 0.5);
+    const segment = new Line3(new Vector3(0, 0, 0), new Vector3(0, 0, 0));
+    tempBox.makeEmpty();
+    tempMatrix.copy(collider.matrixWorld).invert();
+    tempSegment.copy(segment);
+    tempSegment.start.applyMatrix4(player.matrixWorld).applyMatrix4(tempMatrix);
+    tempSegment.end.applyMatrix4(player.matrixWorld).applyMatrix4(tempMatrix);
+    tempBox.expandByPoint(tempSegment.start);
+    tempBox.expandByPoint(tempSegment.end);
+    tempBox.min.sub(new Vector3(width / 2, height / 2, width / 2));
+    tempBox.max.sub(new Vector3(-width / 2, -height / 2, -width / 2));
+    collider.geometry.boundsTree.shapecast(collider, {
+      intersectsBounds: (box) => box.intersectsBox(tempBox),
+      intersectsTriangle: (tri) => {
+        const distance = tri.closestPointToSegment(tempSegment, tempVector, tempVector2);
+        if (distance < radius) {
+          const depth = radius - distance;
+          const direction = tempVector2.sub(tempVector).normalize();
+          tempSegment.start.addScaledVector(direction, depth);
+          tempSegment.end.addScaledVector(direction, depth);
+        }
+      }
+    });
+    const newPosition = tempVector;
+    newPosition.copy(tempSegment.start).applyMatrix4(collider.matrixWorld);
+    const deltaVector = tempVector2;
+    deltaVector.subVectors(newPosition, player.position);
+    player.position.copy(newPosition);
+    player.userData.isOnGround = deltaVector.y > Math.abs(delta * player.userData.velocity.y * 0.25);
+    if (!player.userData.isOnGround) {
+      deltaVector.normalize();
+      player.userData.velocity.addScaledVector(deltaVector, -deltaVector.dot(player.userData.velocity));
+    } else {
+      player.userData.velocity.set(0, 0, 0);
+    }
+    if (player.position.y < -40) {
+      player.userData.velocity.set(0, 0, 0);
+      player.position.set(lastSavePosition.x, lastSavePosition.y, lastSavePosition.z);
+      lifes2--;
+    }
+    updateCameraPosition();
+  };
+  const robotRunning2 = () => {
+    if (mixers2["Robot"]) {
+      if (testAnyKeys2(["KeyW", "KeyA", "KeyS", "KeyD"]) || testAnyButton2([12, 13, 14, 15]) || testAxis2()) {
+        let acceleration = 1;
+        if (testAllKeys2(["ShiftLeft"]) || testAllButtons2([7])) {
+          acceleration = 2;
+        }
+        playAnimation(mixers2["Robot"], animations2["Robot"], "Robot_Running", acceleration);
+      } else {
+        stopAnimation(mixers2["Robot"], animations2["Robot"], "Robot_Running");
+      }
+      if (testAnyKeys2(["Space"]) || testAllButtons2([0])) {
+        if (!pauseOthersAnimations) {
+          if (objects2["Robot"].userData.velocity.y == 0)
+            objects2["Robot"].userData.velocity.y = 5;
+        }
+      }
+    }
+  };
+  const toAnimate2 = () => {
+    for (const model in mixers2) {
+      mixers2[model].update(clock2.getDelta());
+    }
+    if (objects2["Robot"] && objects2["collider"])
+      checkKeysState();
+    if (Object.values(pressedKeys2).includes(true) || pauseOthersAnimations || gamepads2[0]) {
+      checkKeysState();
+    }
+  };
+  const getSkeletonExtremes = (object) => {
+    const skeleton = new SkeletonHelper(object);
+    const bone_min = new Vector3(Infinity, Infinity, Infinity);
+    const bone_max = new Vector3(-Infinity, -Infinity, -Infinity);
+    for (let b = 0; b < skeleton.bones.length; b++) {
+      const child = skeleton.bones[b];
+      const position2 = new Vector3();
+      child.getWorldPosition(position2);
+      if (position2.x < bone_min.x)
+        bone_min.x = position2.x;
+      if (position2.y < bone_min.y)
+        bone_min.y = position2.y;
+      if (position2.z < bone_min.z)
+        bone_min.z = position2.z;
+      if (position2.x > bone_max.x)
+        bone_max.x = position2.x;
+      if (position2.y > bone_max.y)
+        bone_max.y = position2.y;
+      if (position2.z > bone_max.z)
+        bone_max.z = position2.z;
+    }
+    return { min: bone_min, max: bone_max };
+  };
+  loader2.load(characterPath, (gltf) => {
+    const model = gltf.scene;
+    model.traverse((child) => {
+      if (child instanceof Mesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+        child.material.shadowSide = 2;
+      }
+    });
+    model.userData.name = "Robot";
+    model.userData.isOnGround = false;
+    model.userData.velocity = new Vector3(0, 0, 0);
+    model.userData.speed = 1.5, model.position.set(position.x, position.y, position.z);
+    scene2.add(model);
+    objects2[model.userData.name] = model;
+    animations2[model.userData.name] = gltf.animations;
+    mixers2[model.userData.name] = new AnimationMixer(model);
+    mixers2[model.userData.name].addEventListener("finished", function(e) {
+      pauseOthersAnimations = false;
+      robotRunning2();
+    });
+    animations2[model.userData.name].forEach((animation2) => {
+      mixers2[model.userData.name].clipAction(animation2).setEffectiveWeight(0).play();
+    });
+  }, void 0, function(error) {
+    console.error(error);
+  });
+  return {
+    robotRunning: robotRunning2,
+    toAnimate: toAnimate2,
+    lifes: lifes2,
+    resetGame: resetGame2
+  };
+}
+const gui = new GUI$1();
+const scene = new Scene();
+const renderer = new WebGLRenderer({ antialias: true });
+const camera = new PerspectiveCamera();
+const animateFunctions = [];
+const controls = new OrbitControls(camera, renderer.domElement);
+const variables = {
+  scaleFactor: 1,
+  popup: false
+};
+let clientWidth = window.innerWidth;
+let clientHeight = window.innerHeight;
+const maxClientWidth = 1920;
+const maxClientHeight = 1080;
+const clock = new Clock();
+const optFPS = 1 / 45;
+const deoptFPS = 1 / 57;
+let optLevel = 0;
+const characterPosition = new Vector3(0, 0, 0);
+const cameraOffset = new Vector3(2.5, 15, 25);
+const onWindowResize = () => {
+  clientWidth = window.innerWidth;
+  clientHeight = window.innerHeight;
+  calculateScaleFactor();
+  camera.aspect = clientWidth / clientHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(clientWidth, clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2) * variables.scaleFactor);
+};
+const calculateScaleFactor = () => {
+  if (clientWidth > maxClientWidth || clientHeight > maxClientHeight) {
+    variables.scaleFactor = Math.min(maxClientWidth / clientWidth, maxClientHeight / clientHeight);
+  }
+};
+calculateScaleFactor();
+camera.fov = 60;
+camera.aspect = clientWidth / clientHeight;
+camera.near = 1;
+camera.far = 300;
+camera.position.set(characterPosition.x + cameraOffset.x, characterPosition.y + cameraOffset.y, characterPosition.z + cameraOffset.z);
+camera.updateProjectionMatrix();
+renderer.setSize(clientWidth, clientHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2) * variables.scaleFactor);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+scene.background = new Color(4502015);
+scene.fog = new Fog(4502015, 60, 300);
+window.addEventListener("resize", onWindowResize);
+const stats = new Stats();
+stats.showPanel(0);
+document.body.appendChild(stats.dom);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.screenSpacePanning = false;
+controls.minDistance = 30;
+controls.maxDistance = 30;
+controls.maxPolarAngle = 75 * Math.PI / 180;
+controls.enablePan = false;
+controls.enableZoom = false;
+controls.target = characterPosition;
+const manager = new LoadingManager();
+addLights(scene);
+postProduction(scene, camera, renderer);
+const loader = new GLTFLoader(manager);
+const objects = {};
+addMap(loader, scene, objects, `islands/islands.gltf`, `islands/islands_physics.gltf`);
+const pressedKeys = {};
+const { testAllKeys, testAnyKeys, keysFunctions, checkPressedKeys, testAllButtons, testAnyButton, testAxis, checkPads, gamepads } = keysControls(pressedKeys);
+animateFunctions.push(checkPressedKeys, checkPads);
+const animations = {};
+const mixers = {};
+const { robotRunning, toAnimate, lifes, resetGame } = addCharacter(loader, scene, objects, animations, mixers, pressedKeys, testAllKeys, testAnyKeys, gamepads, testAllButtons, testAnyButton, testAxis, `Robot_edited_centered.glb`, controls, camera, characterPosition);
+animateFunctions.push(toAnimate);
+keysFunctions.push(robotRunning);
+const render = () => {
+  renderer.render(scene, camera);
+};
+const guiTemp = {
+  reset: () => {
+    resetGame();
+  }
+};
+const optimization = gui.addFolder("Optymalizacja");
+optimization.open();
+optimization.add(variables, "scaleFactor", 0.05, 1, 0.05).name("Scale\xA0Factor").onChange(onWindowResize);
+optimization.add(renderer.shadowMap, "autoUpdate").name("Update\xA0shadows");
+optimization.add(camera, "far", 60, 500, 10).name("Draw\xA0distance").setValue(300).onChange(() => {
+  scene.fog.far = camera.far;
+  scene.fog.near = camera.far / 3;
+  camera.updateProjectionMatrix();
+});
+gui.add(variables, "popup").name("Poka\u017C sterowanie");
+gui.add(guiTemp, "reset").name("Reset\xA0position");
+const optymize = () => {
+  switch (optLevel) {
+    case 0:
+      variables.scaleFactor = 0.75;
+      onWindowResize();
+      gui.updateDisplay();
+      optLevel = 1;
+      break;
+    case 1:
+      variables.scaleFactor = 0.5;
+      onWindowResize();
+      gui.updateDisplay();
+      optLevel = 2;
+      break;
+  }
+};
+const deOptymize = () => {
+  switch (optLevel) {
+    case 1:
+      variables.scaleFactor = 1;
+      onWindowResize();
+      gui.updateDisplay();
+      optLevel = 0;
+      break;
+    case 2:
+      variables.scaleFactor = 0.75;
+      onWindowResize();
+      gui.updateDisplay();
+      optLevel = 1;
+      break;
+  }
+};
+const animate = () => {
+  stats.begin();
+  const delta = clock.getDelta();
+  requestAnimationFrame(animate);
+  if (delta > optFPS) {
+    optymize();
+  } else if (delta < deoptFPS) {
+    deOptymize();
+  }
+  const ticks = Math.round(delta / (1 / 60));
+  for (let i = 0; i < ticks; i++) {
+    animateFunctions.forEach((func) => {
+      func();
+    });
+    controls.update();
+  }
+  render();
+  stats.end();
+};
+animate();
