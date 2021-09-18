@@ -23783,7 +23783,7 @@ if (typeof window !== "undefined") {
   }
 }
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
-var stats_min$1 = { exports: {} };
+var stats_min = { exports: {} };
 (function(module, exports) {
   (function(f, e) {
     module.exports = e();
@@ -23856,12 +23856,8 @@ var stats_min$1 = { exports: {} };
     };
     return f;
   });
-})(stats_min$1);
-var stats_min = stats_min$1.exports;
-var Stats = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.assign(/* @__PURE__ */ Object.create(null), stats_min$1.exports, {
-  [Symbol.toStringTag]: "Module",
-  "default": stats_min
-}));
+})(stats_min);
+var Stats = stats_min.exports;
 function ___$insertStyle(css2) {
   if (!css2) {
     return;
